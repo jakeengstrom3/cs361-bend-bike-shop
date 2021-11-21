@@ -1,5 +1,4 @@
 # Bike
-require_relative 'luggage'
 
 class Bike
 
@@ -7,12 +6,16 @@ class Bike
 
   attr_reader :id, :color, :price, :weight, :luggage
 
-  def initialize(id, color, price, extra_items)
+  def initialize(id, color, price, extra_items, luggage)
     @id = id
     @color = color
     @price = price
     @weight = STANDARD_WEIGHT
-    @luggage = Luggage.new(Luggage::DEFAULT_MAX_CAPACITY, extra_items, self)
+    @luggage = luggage
   end
+
+  def item_count
+    self.luggage.item_count
+  end 
 
 end
